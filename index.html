@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Unique Portfolio</title>
+
+    <!-- Use a professional font for a clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a2a3a;
+            /* Dark background */
+            color: #E5E7EB;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, #4F46E5, transparent 50%),
+                radial-gradient(circle at 90% 80%, #C084FC, transparent 50%);
+            opacity: 0.3;
+            z-index: -1;
+            animation: gradient-anim 15s ease infinite;
+        }
+
+        @keyframes gradient-anim {
+            0% {
+                background-size: 100% 100%;
+            }
+
+            50% {
+                background-size: 150% 150%;
+            }
+
+            100% {
+                background-size: 100% 100%;
+            }
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Glassmorphism effect */
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        .glass-panel:hover {
+            transform: scale(1.01);
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #818CF8;
+        }
+
+        .menu-button {
+            display: block;
+            color: white;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            background-color: rgba(17, 24, 39, 0.8);
+            padding: 1rem 0;
+        }
+
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 1rem;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 4rem;
+            padding-bottom: 6rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            opacity: 1;
+            /* For future animations */
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-section {
+            min-height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(to right, #C084FC, #4F46E5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #D1D5DB;
+            max-width: 600px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .about-content {
+            padding: 2rem 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            color: #D1D5DB;
+            line-height: 1.625;
+            font-size: 1.125rem;
+        }
+
+        .resume-content {
+            padding: 2rem;
+            text-align: center;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .resume-text {
+            font-size: 1.125rem;
+            color: #D1D5DB;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: #4F46E5;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+            text-decoration: none;
+            animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .download-button:hover {
+            animation: none;
+            background-color: #6366F1;
+            transform: scale(1.05);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: transform 0.5s ease-out;
+            z-index: -1;
+        }
+
+        .project-card:hover::before {
+            transform: scale(1.1);
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card-description {
+            color: #9CA3AF;
+            font-size: 0.875rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .contact-form-panel {
+            padding: 2rem;
+        }
+
+        .contact-form-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            color: #D1D5DB;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #1F2937;
+            border-radius: 0.5rem;
+            outline: none;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: 2px solid #4F46E5;
+            outline-offset: 2px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: #4F46E5;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            border: none;
+        }
+
+        .submit-button:hover {
+            background-color: #6366F1;
+            transform: scale(1.05);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            text-align: center;
+            color: #86EFAC;
+            font-weight: 600;
+        }
+
+        .map-panel {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .map-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .map-iframe {
+            border: 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 450px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #343a40;
+            /* Dark background */
+            color: #fff;
+            /* White text */
+            padding: 3rem 1rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* Responsive grid */
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #17a2b8;
+            /* A bright, professional color */
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.95rem;
+            color: #dcdcdc;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+
+        .footer-email {
+            color: #17a2b8;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer-email:hover {
+            color: #fff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul a {
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #495057;
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: #adb5bd;
+        }
+
+        .footer-email {
+            color: #17a2b8;
+            /* A bright, professional blue-green for the link */
+            font-weight: bold;
+            text-decoration: none;
+            /* Removes the default underline */
+            transition: color 0.3s ease, transform 0.3s ease;
+            /* Smooth transition for color and hover effect */
+            display: inline-block;
+            /* Allows for the scale transform */
+        }
+
+        .footer-email:hover,
+        .footer-email:focus {
+            color: #fff;
+            /* Changes text color to white on hover/focus */
+            transform: scale(1.05);
+            /* Slightly enlarges the link for a subtle interactive effect */
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .menu-button,
+            .mobile-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 4.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .section-header {
+                font-size: 2.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #4F46E5;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #1a2a3a;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a href="portfolio.htm" class="nav-logo">MY PORTFOLIO</a>
+
+            <!-- Desktop Navigation -->
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#resume" class="nav-link">Resume</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <!-- Mobile Hamburger Menu -->
+            <button id="menu-button" class="menu-button">
+                <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (initially hidden) -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="mobile-menu-content">
+                <a href="#about" class="nav-link" onclick="toggleMenu()">About</a>
+                <a href="#resume" class="nav-link" onclick="toggleMenu()">Resume</a>
+                <a href="#portfolio" class="nav-link" onclick="toggleMenu()">Portfolio</a>
+                <a href="#contact" class="nav-link" onclick="toggleMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">
+                Hi, I'm <span class="highlight">Rohan kumar</span>
+            </h1>
+            <p class="hero-subtitle">
+                A creative developer crafting unique digital experiences.
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-header">About Me</h2>
+            <div class="glass-panel about-content">
+                <p class="about-text">
+                    I'm a frontend developer who loves to build. My goal isn't just to make things look good; it's to
+                    create web applications that are genuinely useful and easy to use. I see every project through an
+                    entrepreneurial lens, blending clean code with smart design to solve real problems. Ultimately, I
+                    want to build a company that creates digital experiences people love, and this portfolio is a
+                    collection of my work on that journey.
+                </p>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2 class="section-header">My Resume</h2>
+            <div class="glass-panel resume-content">
+                <p class="resume-text">
+                    A concise overview of my professional journey, key skills, and accomplishments.
+                </p>
+                <a href="https://drive.google.com/file/d/1kSKUH_TIsDV6lAlag5Z9Gg01nZldzTHy/view?usp=drivesdk"
+                    class="download-button">
+                    Download Full Resume
+                </a>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2 class="section-header">My Portfolio</h2>
+            <div class="portfolio-grid">
+                <!-- Project Card 1 -->
+                <div class="glass-panel project-card">
+                    <img src="vm.png" alt="Project 1" class="project-card-image">
+                    <h3 class="project-card-title">A Modern B2B E-Commerce Site</h3>
+                    <p class="project-card-description">A clean, responsive, and performant online store built with
+                        modern web technologies.</p>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="glass-panel project-card">
+                    <img src="KF.png" alt="Project 2" class="project-card-image">
+                    <h3 class="project-card-title">A Modern B2C E-Commerce Site</h3>
+                    <p class="project-card-description">A clean, responsive, and performant online store built with
+                        modern web technologies.</p>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="glass-panel project-card">
+                    <img src="FC.png" alt="Project 3" class="project-card-image">
+                    <h3 class="project-card-title">India's First Hyperlocal FMCG B2B Platform</h3>
+                    <p class="project-card-description">Connecting manufacturers, distributors, and retailers with
+                        transparent, PIN code-based discovery and streamlined logistics..</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-header">Get In Touch</h2>
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <div class="glass-panel contact-form-panel">
+                    <h3 class="contact-form-title">Send me a message</h3>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-field">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" rows="4" class="form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            Send Message
+                        </button>
+                    </form>
+                    <p id="form-message" class="form-message" style="display: none;"></p>
+                </div>
+
+                <!-- Google Map -->
+                <div class="glass-panel map-panel">
+                    <h3 class="map-title">My Location</h3>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2371.7638483104174!2d85.69847432327177!3d26.468705876914523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sjanakpur%20road%20railway%20station%20basant%20chowk%20pupri!5e1!3m2!1sen!2sin!4v1757711211703!5m2!1sen!2sin"
+                        class="map-iframe" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section contact-info">
+                <h3>Let's Connect</h3>
+                <p>I'm always open to new opportunities. Feel free to reach out!</p>
+                <a href="mailto:rohandas6555@gmail.com" class="footer-email">rohandas6555@gmail.com</a>
+            </div>
+            <div class="footer-section navigation">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social-links">
+                <h3>Follow Me</h3>
+                <a href="https://www.linkedin.com/in/rohan-kumar-7ba89930b " target="_blank"
+                    aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://www.instagram.com/im_rohan_kr?igsh=MXBkMWxrbDc1N2d2ZQ==" target="_blank"
+                    aria-label="GitHub">Instagram</a>
+                <a href="https://www.facebook.com/share/1CZqdgJ2r2/" target="_blank" aria-label="Facebook">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Rohan Kumar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling and mobile menu -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        menuButton.addEventListener('click', toggleMenu);
+
+        // Form submission handler
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+            formMessage.style.display = 'block';
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>
