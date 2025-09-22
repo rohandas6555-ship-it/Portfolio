@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Unique Portfolio</title>
 
-    <!-- Use a professional font for a clean look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background: #1a2a3a;
-            /* Dark background */
             color: #E5E7EB;
             margin: 0;
             padding: 0;
@@ -53,7 +53,6 @@
             }
         }
 
-        /* Container for content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -61,7 +60,6 @@
             padding-right: 1rem;
         }
 
-        /* Glassmorphism effect */
         .glass-panel {
             background-color: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
@@ -77,7 +75,6 @@
             transform: scale(1.01);
         }
 
-        /* Navigation Bar */
         .nav-bar {
             position: sticky;
             top: 0;
@@ -146,7 +143,6 @@
             gap: 1rem;
         }
 
-        /* Main Content */
         main {
             padding-top: 4rem;
             padding-bottom: 6rem;
@@ -155,7 +151,6 @@
         section {
             margin-bottom: 6rem;
             opacity: 1;
-            /* For future animations */
         }
 
         .section-header {
@@ -174,12 +169,47 @@
             align-items: center;
             text-align: center;
         }
+        
+        /* Two-column layout for hero section on desktop */
+        .hero-content-wrapper {
+            display: flex;
+            flex-direction: column; /* Default to column for mobile */
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-photo {
+            position: relative;
+            padding: 1rem;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #4F46E5;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(79, 70, 229, 0.7);
+        }
 
         .hero-title {
             font-size: 3rem;
             font-weight: bold;
             color: white;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             line-height: 1.25;
             animation: fadeIn 1s ease-in-out;
         }
@@ -412,20 +442,18 @@
             height: 450px;
         }
 
-        /* Footer */
+        /* Footer styles - Improved for better layout and design */
         .footer {
-            background-color: #343a40;
-            /* Dark background */
-            color: #fff;
-            /* White text */
+            background-color: #1F2937;
+            color: #d1d5db;
             padding: 3rem 1rem;
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            /* Responsive grid */
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -434,26 +462,20 @@
         .footer-section h3 {
             font-size: 1.25rem;
             margin-bottom: 1rem;
-            color: #17a2b8;
-            /* A bright, professional color */
+            color: #6366F1;
         }
 
         .footer-section p,
         .footer-section a {
             font-size: 0.95rem;
-            color: #dcdcdc;
+            color: #d1d5db;
             line-height: 1.5;
             text-decoration: none;
-        }
-
-        .footer-email {
-            color: #17a2b8;
-            font-weight: bold;
             transition: color 0.3s ease;
         }
 
-        .footer-email:hover {
-            color: #fff;
+        .footer-section a:hover {
+            color: #C084FC;
         }
 
         .footer-section ul {
@@ -466,44 +488,28 @@
             margin-bottom: 0.5rem;
         }
 
-        .footer-section ul a {
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #d1d5db;
+            font-size: 1.5rem;
             transition: color 0.3s ease;
         }
 
-        .footer-section ul a:hover {
-            color: #fff;
+        .social-icons a:hover {
+            color: #C084FC;
         }
-
+        
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
-            border-top: 1px solid #495057;
-        }
-
-        .footer-bottom p {
-            font-size: 0.85rem;
-            color: #adb5bd;
-        }
-
-        .footer-email {
-            color: #17a2b8;
-            /* A bright, professional blue-green for the link */
-            font-weight: bold;
-            text-decoration: none;
-            /* Removes the default underline */
-            transition: color 0.3s ease, transform 0.3s ease;
-            /* Smooth transition for color and hover effect */
-            display: inline-block;
-            /* Allows for the scale transform */
-        }
-
-        .footer-email:hover,
-        .footer-email:focus {
-            color: #fff;
-            /* Changes text color to white on hover/focus */
-            transform: scale(1.05);
-            /* Slightly enlarges the link for a subtle interactive effect */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9CA3AF;
         }
 
         /* --- Media Queries for Responsiveness --- */
@@ -515,6 +521,19 @@
             .menu-button,
             .mobile-menu {
                 display: none;
+            }
+            
+            /* Two-column layout for hero section on desktop */
+            .hero-content-wrapper {
+                flex-direction: row; /* Change to row for desktop */
+                justify-content: center;
+                text-align: left;
+                gap: 4rem; /* Add more space between photo and text */
+            }
+
+            .hero-text {
+                text-align: left;
+                align-items: flex-start;
             }
 
             .hero-title {
@@ -563,12 +582,10 @@
 
 <body class="antialiased">
 
-    <!-- Navigation Bar -->
     <nav class="nav-bar">
         <div class="container nav-content">
-            <a href="portfolio.htm" class="nav-logo">MY PORTFOLIO</a>
+            <a href="#hero" class="nav-logo">MY PORTFOLIO</a>
 
-            <!-- Desktop Navigation -->
             <div class="nav-links">
                 <a href="#about" class="nav-link">About</a>
                 <a href="#resume" class="nav-link">Resume</a>
@@ -576,7 +593,6 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
 
-            <!-- Mobile Hamburger Menu -->
             <button id="menu-button" class="menu-button">
                 <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -586,7 +602,6 @@
             </button>
         </div>
 
-        <!-- Mobile Menu (initially hidden) -->
         <div id="mobile-menu" class="mobile-menu">
             <div class="mobile-menu-content">
                 <a href="#about" class="nav-link" onclick="toggleMenu()">About</a>
@@ -598,22 +613,27 @@
     </nav>
 
     <main class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h1 class="hero-title">
-                Hi, I'm <span class="highlight">Rohan kumar</span>
-            </h1>
-            <p class="hero-subtitle">
-                A creative developer crafting unique digital experiences.
-            </p>
+        <section class="hero-section" id="hero">
+            <div class="hero-content-wrapper">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="highlight">Rohan Kumar</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        A creative frontend developer crafting unique digital experiences.
+                    </p>
+                </div>
+                <div class="hero-photo">
+                    <img src="pimg.jpg" alt="Profile Photo of Rohan Kumar" class="profile-photo">
+                </div>
+            </div>
         </section>
 
-        <!-- About Section -->
         <section id="about">
             <h2 class="section-header">About Me</h2>
             <div class="glass-panel about-content">
                 <p class="about-text">
-                    I'm a frontend developer who loves to build. My goal isn't just to make things look good; it's to
+                    I am a frontend developer who loves to build. My goal isn't just to make things look good; it's to
                     create web applications that are genuinely useful and easy to use. I see every project through an
                     entrepreneurial lens, blending clean code with smart design to solve real problems. Ultimately, I
                     want to build a company that creates digital experiences people love, and this portfolio is a
@@ -622,7 +642,6 @@
             </div>
         </section>
 
-        <!-- Resume Section -->
         <section id="resume">
             <h2 class="section-header">My Resume</h2>
             <div class="glass-panel resume-content">
@@ -636,25 +655,21 @@
             </div>
         </section>
 
-        <!-- Portfolio Section -->
         <section id="portfolio">
             <h2 class="section-header">My Portfolio</h2>
             <div class="portfolio-grid">
-                <!-- Project Card 1 -->
                 <div class="glass-panel project-card">
                     <img src="vm.png" alt="Project 1" class="project-card-image">
                     <h3 class="project-card-title">A Modern B2B E-Commerce Site</h3>
                     <p class="project-card-description">A clean, responsive, and performant online store built with
                         modern web technologies.</p>
                 </div>
-                <!-- Project Card 2 -->
                 <div class="glass-panel project-card">
                     <img src="KF.png" alt="Project 2" class="project-card-image">
                     <h3 class="project-card-title">A Modern B2C E-Commerce Site</h3>
                     <p class="project-card-description">A clean, responsive, and performant online store built with
                         modern web technologies.</p>
                 </div>
-                <!-- Project Card 3 -->
                 <div class="glass-panel project-card">
                     <img src="FC.png" alt="Project 3" class="project-card-image">
                     <h3 class="project-card-title">India's First Hyperlocal FMCG B2B Platform</h3>
@@ -664,11 +679,9 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-header">Get In Touch</h2>
             <div class="contact-content">
-                <!-- Contact Form -->
                 <div class="glass-panel contact-form-panel">
                     <h3 class="contact-form-title">Send me a message</h3>
                     <form id="contact-form" class="contact-form">
@@ -691,11 +704,9 @@
                     <p id="form-message" class="form-message" style="display: none;"></p>
                 </div>
 
-                <!-- Google Map -->
                 <div class="glass-panel map-panel">
                     <h3 class="map-title">My Location</h3>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2371.7638483104174!2d85.69847432327177!3d26.468705876914523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sjanakpur%20road%20railway%20station%20basant%20chowk%20pupri!5e1!3m2!1sen!2sin!4v1757711211703!5m2!1sen!2sin"
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.5501062031127!2d85.1384062!3d25.6268846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed193108c4a457%3A0xc3e57f2a1b9442a8!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1628178123456!5m2!1sen!2sin"
                         class="map-iframe" allowfullscreen="" loading="lazy">
                     </iframe>
                 </div>
@@ -703,7 +714,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section contact-info">
@@ -722,23 +732,29 @@
             </div>
             <div class="footer-section social-links">
                 <h3>Follow Me</h3>
-                <a href="https://www.linkedin.com/in/rohan-kumar-7ba89930b " target="_blank"
-                    aria-label="LinkedIn">LinkedIn</a>
-                <a href="https://www.instagram.com/im_rohan_kr?igsh=MXBkMWxrbDc1N2d2ZQ==" target="_blank"
-                    aria-label="GitHub">Instagram</a>
-                <a href="https://www.facebook.com/share/1CZqdgJ2r2/" target="_blank" aria-label="Facebook">Facebook</a>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/rohan-kumar-7ba89930b" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/im_rohan_kr?igsh=MXBkMWxrbDc1N2d2ZQ==" target="_blank"
+                        aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1CZqdgJ2r2/" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Rohan Kumar. All Rights Reserved.</p>
+            <p>© 2025 Rohan Kumar. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for smooth scrolling and mobile menu -->
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
@@ -760,7 +776,7 @@
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
 
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
             formMessage.style.display = 'block';
