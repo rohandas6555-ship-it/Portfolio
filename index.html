@@ -170,10 +170,10 @@
             text-align: center;
         }
         
-        /* Two-column layout for hero section on desktop */
+        /* New Two-column layout for hero section on desktop */
         .hero-content-wrapper {
             display: flex;
-            flex-direction: column; /* Default to column for mobile */
+            flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 2rem;
@@ -227,17 +227,70 @@
             animation: fadeIn 1.5s ease-in-out;
         }
 
+        .hero-description {
+            font-size: 1rem;
+            color: #9CA3AF;
+            max-width: 600px;
+            margin-top: 1rem;
+        }
+        
+        .social-links-hero {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links-hero a {
+            color: #d1d5db;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links-hero a:hover {
+            color: #C084FC;
+        }
+
+        /* New About section layout */
         .about-content {
-            padding: 2rem 3rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 2rem;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .about-text-container {
+            flex: 1;
+        }
+        
+        .about-skills-container {
+            flex: 1;
         }
 
         .about-text {
             color: #D1D5DB;
             line-height: 1.625;
             font-size: 1.125rem;
+        }
+
+        .about-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-badge {
+            background-color: #4F46E5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background-color: #6366F1;
         }
 
         .resume-content {
@@ -291,19 +344,24 @@
             gap: 2rem;
         }
 
+        /* New Project card with hover effect */
         .project-card {
             padding: 1.5rem;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
         }
-
+        
         .project-card:hover {
             transform: translateY(-5px) scale(1.01);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
+        
         .project-card::before {
             content: '';
             position: absolute;
@@ -316,11 +374,11 @@
             transition: transform 0.5s ease-out;
             z-index: -1;
         }
-
+        
         .project-card:hover::before {
             transform: scale(1.1);
         }
-
+        
         .project-card-image {
             width: 100%;
             height: auto;
@@ -329,17 +387,33 @@
             margin-bottom: 1rem;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
-
+        
         .project-card-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: white;
             margin-bottom: 0.5rem;
         }
-
+        
         .project-card-description {
             color: #9CA3AF;
             font-size: 0.875rem;
+        }
+        
+        .project-card-link {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: #4F46E5;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .project-card-link:hover {
+            background-color: #6366F1;
         }
 
         .contact-content {
@@ -525,14 +599,13 @@
             
             /* Two-column layout for hero section on desktop */
             .hero-content-wrapper {
-                flex-direction: row; /* Change to row for desktop */
-                justify-content: center;
+                flex-direction: row;
+                justify-content: space-around;
                 text-align: left;
-                gap: 4rem; /* Add more space between photo and text */
+                gap: 4rem;
             }
-
+            
             .hero-text {
-                text-align: left;
                 align-items: flex-start;
             }
 
@@ -542,6 +615,17 @@
 
             .hero-subtitle {
                 font-size: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.125rem;
+            }
+            
+            /* New About section layout */
+            .about-content {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
             }
 
             .section-header {
@@ -615,6 +699,11 @@
     <main class="container">
         <section class="hero-section" id="hero">
             <div class="hero-content-wrapper">
+                <div class="hero-photo">
+                    <a href="https://www.linkedin.com/in/rohan-kumar-7ba89930b">
+                        <img src="pimg.jpg" alt="Profile Photo of Rohan Kumar" class="profile-photo">
+                    </a>
+                </div>
                 <div class="hero-text">
                     <h1 class="hero-title">
                         Hi, I'm <span class="highlight">Rohan Kumar</span>
@@ -622,9 +711,20 @@
                     <p class="hero-subtitle">
                         A creative frontend developer crafting unique digital experiences.
                     </p>
-                </div>
-                <div class="hero-photo">
-                    <img src="pimg.jpg" alt="Profile Photo of Rohan Kumar" class="profile-photo">
+                    <p class="hero-description">
+                        I specialize in building elegant and efficient web applications. With a keen eye for detail and a passion for clean code, I turn complex ideas into seamless user experiences. I'm always exploring new technologies and frameworks to stay ahead of the curve and deliver innovative solutions. Let's create something amazing together.
+                    </p>
+                    <div class="social-links-hero">
+                        <a href="https://www.linkedin.com/in/rohan-kumar-7ba89930b" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/im_rohan_kr?igsh=MXBkMWxrbDc1N2d2ZQ==" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1CZqdgJ2r2/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -632,13 +732,28 @@
         <section id="about">
             <h2 class="section-header">About Me</h2>
             <div class="glass-panel about-content">
-                <p class="about-text">
-                    I am a frontend developer who loves to build. My goal isn't just to make things look good; it's to
-                    create web applications that are genuinely useful and easy to use. I see every project through an
-                    entrepreneurial lens, blending clean code with smart design to solve real problems. Ultimately, I
-                    want to build a company that creates digital experiences people love, and this portfolio is a
-                    collection of my work on that journey.
-                </p>
+                <div class="about-text-container">
+                    <p class="about-text">
+                        I am a frontend developer who loves to build. My goal isn't just to make things look good; it's to
+                        create web applications that are genuinely useful and easy to use. I see every project through an
+                        entrepreneurial lens, blending clean code with smart design to solve real problems. Ultimately, I
+                        want to build a company that creates digital experiences people love, and this portfolio is a
+                        collection of my work on that journey.
+                    </p>
+                </div>
+                <div class="about-skills-container">
+                    <h3 class="contact-form-title" style="margin-bottom: 1rem;">My Skills</h3>
+                    <div class="about-skills">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">Tailwind CSS</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Node.js</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -663,18 +778,21 @@
                     <h3 class="project-card-title">A Modern B2B E-Commerce Site</h3>
                     <p class="project-card-description">A clean, responsive, and performant online store built with
                         modern web technologies.</p>
+                    <a href="#" class="project-card-link">View Project</a>
                 </div>
                 <div class="glass-panel project-card">
                     <img src="KF.png" alt="Project 2" class="project-card-image">
                     <h3 class="project-card-title">A Modern B2C E-Commerce Site</h3>
                     <p class="project-card-description">A clean, responsive, and performant online store built with
                         modern web technologies.</p>
+                    <a href="#" class="project-card-link">View Project</a>
                 </div>
                 <div class="glass-panel project-card">
                     <img src="FC.png" alt="Project 3" class="project-card-image">
                     <h3 class="project-card-title">India's First Hyperlocal FMCG B2B Platform</h3>
                     <p class="project-card-description">Connecting manufacturers, distributors, and retailers with
                         transparent, PIN code-based discovery and streamlined logistics..</p>
+                    <a href="#" class="project-card-link">View Project</a>
                 </div>
             </div>
         </section>
@@ -706,8 +824,8 @@
 
                 <div class="glass-panel map-panel">
                     <h3 class="map-title">My Location</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.5501062031127!2d85.1384062!3d25.6268846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed193108c4a457%3A0xc3e57f2a1b9442a8!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1628178123456!5m2!1sen!2sin"
-                        class="map-iframe" allowfullscreen="" loading="lazy">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.5501062031127!2d85.1384062!3d25.6268846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed193108c4a457%3A0xc3e57f2a1b9442a8!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1628178123456!5m2!1sen!2sin" class="map-iframe" allowfullscreen=""
+                        loading="lazy">
                     </iframe>
                 </div>
             </div>
@@ -754,7 +872,7 @@
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
@@ -776,7 +894,7 @@
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
 
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
             formMessage.style.display = 'block';
